@@ -1,0 +1,56 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# PostgreSQL backups and dumps
+*.dump
+*.sql
+*.backup
+
+# User uploaded files
+media/
+
+# Collected static files
+staticfiles/
+
+# Coverage and testing
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/

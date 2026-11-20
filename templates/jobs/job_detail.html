@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block title %}{{ job.title }}{% endblock %}
+{% block content %}<div class="card"><div class="card-body"><h2>{{ job.title }}</h2><h5>{{ job.company_name }} · {{ job.city }}</h5><p class="text-muted">{{ job.category }} | {{ job.get_employment_type_display }} | {{ job.get_experience_display }}</p>
+{% if job.min_salary or job.max_salary %}<p>حقوق: {{ job.min_salary|default:"—" }} تا {{ job.max_salary|default:"—" }} تومان</p>{% else %}<p>حقوق توافقی</p>{% endif %}
+<hr><h5>شرح شغل</h5>{{ job.description|linebreaks }}<h5>شرایط احراز</h5>{{ job.requirements|linebreaks }}<h5>مزایا</h5>{{ job.benefits|linebreaks }}
+{% if user.is_authenticated %}<a class="btn btn-primary" href="{% url 'applications:apply' job.pk %}">ارسال درخواست</a>{% else %}<a class="btn btn-primary" href="{% url 'accounts:request_otp' %}?next={{ request.path }}">برای درخواست وارد شوید</a>{% endif %}
+{% if user == job.employer %}<a class="btn btn-outline-secondary" href="{% url 'jobs:edit' job.pk %}">ویرایش</a>{% endif %}
+</div></div>{% endblock %}

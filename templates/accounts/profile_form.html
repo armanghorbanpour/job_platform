@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}پروفایل من{% endblock %}
+{% block content %}<div class="form-card"><h3>پروفایل و رزومه</h3><p class="text-muted">رزومه را با فرمت PDF و حداکثر ۵ مگابایت بارگذاری کنید.</p><form method="post" enctype="multipart/form-data">{% csrf_token %}{{ form.as_p }}<button class="btn btn-primary">ذخیره</button></form></div>{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}کاریاب | فرصت‌های شغلی{% endblock %}
+{% block content %}
+<section class="p-5 mb-4 bg-white rounded-4 shadow-sm text-center">
+ <h1 class="mb-3">فرصت شغلی بعدی‌ات را پیدا کن</h1>
+ <p class="text-muted">میان فرصت‌های شغلی شرکت‌ها جستجو کن.</p>
+ <form class="row g-2 justify-content-center" method="get" action="{% url 'jobs:list' %}">
+  <div class="col-md-5"><input class="form-control" name="q" placeholder="عنوان شغلی یا نام شرکت"></div>
+  <div class="col-md-3"><input class="form-control" name="city" placeholder="شهر"></div>
+  <div class="col-md-2"><button class="btn btn-primary w-100">جستجو</button></div>
+ </form>
+ <div class="mt-3"><a href="{% url 'jobs:create' %}" class="btn btn-outline-primary">ثبت آگهی استخدام</a></div>
+</section>
+<h3 class="mb-3">دسته‌بندی‌ها</h3>
+<div class="d-flex flex-wrap gap-2 mb-4">{% for c in categories %}<a class="btn btn-outline-secondary" href="{% url 'jobs:list' %}?category={{ c.slug }}">{{ c.title }}</a>{% empty %}<p>هنوز دسته‌ای ثبت نشده است.</p>{% endfor %}</div>
+<h3 class="mb-3">جدیدترین فرصت‌ها</h3>
+<div class="row g-3">{% for job in latest_jobs %}<div class="col-md-6"><div class="card h-100"><div class="card-body">
+ <h5><a href="{% url 'jobs:detail' job.pk %}">{{ job.title }}</a></h5><div>{{ job.company_name }} · {{ job.city }}</div><small class="text-muted">{{ job.category }}</small>
+</div></div></div>{% empty %}<p>هنوز آگهی فعالی ثبت نشده است.</p>{% endfor %}</div>
+{% endblock %}

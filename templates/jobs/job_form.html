@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}ثبت آگهی{% endblock %}
+{% block content %}<div class="form-card"><h3>{% if object %}ویرایش آگهی{% else %}ثبت آگهی استخدام{% endif %}</h3><form method="post">{% csrf_token %}{{ form.as_p }}<button class="btn btn-primary">ذخیره و انتشار</button></form></div>{% endblock %}

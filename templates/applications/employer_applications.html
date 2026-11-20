@@ -1,0 +1,70 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3 class="mb-4">درخواست‌های دریافتی</h3>
+
+{% for a in applications %}
+
+<div class="card mb-3 shadow-sm border-0">
+    <div class="card-body">
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2 mb-3">
+
+            <div>
+                <h5 class="mb-2">{{ a.job.title }}</h5>
+
+                <div class="text-muted">
+                    {{ a.applicant.profile.first_name }}
+                    {{ a.applicant.profile.last_name }}
+                </div>
+
+                <small class="text-muted">
+                    {{ a.applicant.phone_number }}
+                </small>
+            </div>
+
+            <span class="badge {{ a.get_status_badge_class }} fs-6">
+                {{ a.get_status_display }}
+            </span>
+
+        </div>
+
+        {% if a.cover_letter %}
+        <div class="bg-light rounded p-3 mb-3">
+            <strong class="d-block mb-2">متن معرفی:</strong>
+            {{ a.cover_letter|linebreaksbr }}
+        </div>
+        {% endif %}
+
+        <div class="d-flex flex-wrap gap-2">
+
+            <a href="{{ a.resume_snapshot.url }}"
+               class="btn btn-sm btn-outline-success"
+               target="_blank"
+               rel="noopener">
+                <i class="bi bi-file-earmark-pdf"></i>
+                مشاهده رزومه ارسالی
+            </a>
+
+            <a href="{% url 'applications:status' a.pk %}"
+               class="btn btn-sm btn-outline-primary">
+                <i class="bi bi-arrow-repeat"></i>
+                تغییر وضعیت
+            </a>
+
+        </div>
+
+    </div>
+</div>
+
+{% empty %}
+
+<div class="alert alert-light text-center border">
+    درخواستی دریافت نشده است.
+</div>
+
+{% endfor %}
+
+{% endblock %}

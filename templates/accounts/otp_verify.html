@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}تأیید شماره{% endblock %}
+{% block content %}<div class="form-card"><h3>کد تأیید</h3><form method="post">{% csrf_token %}{{ form.as_p }}<button class="btn btn-primary">تأیید و ورود</button></form></div>{% endblock %}

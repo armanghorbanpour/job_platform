@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<div class="form-card"><h3>درخواست برای {{ job.title }}</h3><p>رزومه فعلی پروفایل به‌صورت یک نسخه مستقل برای این درخواست ذخیره می‌شود.</p><form method="post">{% csrf_token %}{{ form.as_p }}<button class="btn btn-primary">ثبت درخواست</button></form></div>{% endblock %}

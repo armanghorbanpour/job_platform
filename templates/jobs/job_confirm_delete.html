@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<div class="form-card"><h3>حذف آگهی</h3><p>از حذف «{{ object.title }}» مطمئن هستید؟</p><form method="post">{% csrf_token %}<button class="btn btn-danger">حذف</button><a class="btn btn-secondary" href="{% url 'jobs:my_jobs' %}">انصراف</a></form></div>{% endblock %}
